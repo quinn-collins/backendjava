@@ -8,50 +8,47 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Coming soon..
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Coming soon..
-```
+* Maven
+* Docker
+* JVM
 
 ## Running the application locally
 
-With Maven installed you can run the application with the following command
+Clone or download the repository
+```
+git clone https://github.com/quinn-collins/backendjava.git
+```
+
+Use Maven to package the application and then run it with the java command
 ```
 ./mvnw package && java -jar target/backendjava-0.0.1-SNAPSHOT.jar
 ```
 
 ### Running within Docker container
 
-With Docker installed you can run the application within a docker container with the following command
+Use Docker to run the application without needing to download or compile source code
 ```
 docker run --name backend_rest_api -d -p 8080:8080 -t quinnc11/backendjava
 ```
 
 ### Building and pushing Docker image manually
 
-With Maven installed you can build a docker image locally and push it utilizing the following commands
+Using Maven you can build a docker image locally and then run it the same way you would pulling it from Docker Hub
 ```
 ./mvnw install dockerfile:build
+docker run --name backend_rest_api -d -p 8080:8080 -t quinnc11/backendjava
+```
+
+If you want to make changes to the source you can push the image you created up with the following command
+```
 ./mvnw dockerfile:push
 ```
-You should only need to push the image if you are building your own custom version. You won't need to build the image unless you don't want to pull it from my repository on Docker Hub.
 
 ## Testing API manually
 
 You can test the application the same way you do with any other API.
 
-With CURL
+With CURL:
 ```
 curl localhost:8080/employees
 curl localhost:8080/employees/1
