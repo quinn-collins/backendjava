@@ -24,21 +24,23 @@ Use Maven to package the application and then run it with the java command
 ./mvnw package && java -jar target/backendjava-0.0.1-SNAPSHOT.jar
 ```
 
-### Running within Docker container
+## Running within Docker container
 
 Use Docker to run the application without needing to download or compile source code
 ```
 docker run --name backend_rest_api -d -p 8080:8080 -t quinnc11/backendjava
 ```
 
-### Building and pushing Docker image manually
+## Building and pushing Docker image manually
 
+### Build a Docker image
 Using Maven you can build a docker image locally and then run it the same way you would pulling it from Docker Hub
 ```
 ./mvnw install dockerfile:build
 docker run --name backend_rest_api -d -p 8080:8080 -t quinnc11/backendjava
 ```
 
+### Push a Docker image
 If you want to make changes to the source you can push the image you created up with the following command
 ```
 ./mvnw dockerfile:push
@@ -87,7 +89,7 @@ Running unit tests coming soon
 Coming soon..
 ```
 
-### Running integration/end-to-end/automation tests
+## Running integration/end-to-end/automation tests
 
 Running automation tests coming soon
 
