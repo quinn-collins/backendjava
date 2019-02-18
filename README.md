@@ -24,17 +24,71 @@ Say what the step will be
 Coming soon..
 ```
 
-And repeat
+## Running the application locally
 
+With Maven installed you can run the application with the following command
 ```
-Coming soon..
+./mvnw package && java -jar target/backendjava-0.0.1-SNAPSHOT.jar
 ```
 
-Example of actual using this REST API coming soon
+### Running within Docker container
+
+With Docker installed you can run the application within a docker container with the following command
+```
+docker run --name backend_rest_api -d -p 8080:8080 -t quinnc11/backendjava
+```
+
+### Building and pushing Docker image manually
+
+With Maven installed you can build a docker image locally and push it utilizing the following commands
+```
+./mvnw install dockerfile:build
+./mvnw dockerfile:push
+```
+You should only need to push the image if you are building your own custom version. You won't need to build the image unless you don't want to pull it from my repository on Docker Hub.
+
+## Testing API manually
+
+You can test the application the same way you do with any other API.
+
+With CURL
+```
+curl localhost:8080/employees
+curl localhost:8080/employees/1
+curl -X POST \
+  http://localhost:8080/employees \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "name": "xyz",
+    "role": "xyz"
+}'
+curl -X PUT \
+  http://localhost:8080/employees/3 \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "name": "zyx",
+    "role": "zyx"
+}'
+curl -X DELETE http://localhost:8080/employees/2
+curl http://localhost:8080/orders
+curl -X DELETE http://localhost:8080/orders/4/cancel
+curl -X PUT http://localhost:8080/orders/4/complete
+curl http://localhost:8080/orders/3
+curl -X POST \
+  http://localhost:8080/orders/ \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "description": "abc"
+}'
+```
 
 ## Running the unit tests
 
 Running unit tests coming soon
+
+```
+Coming soon..
+```
 
 ### Running integration/end-to-end/automation tests
 
@@ -48,19 +102,12 @@ Coming soon..
 
 Coming soon..
 
-## Built With
-
-* Coming soon..
-* Coming soon..
-* Coming soon..
-
 ## Authors
 
 * **Quinn Collins** 
 
-
 ## Acknowledgments
 
-* Coming soon..
+* https://spring.io/guides/gs/spring-boot-docker/ 
 * Coming soon..
 * Coming soon.. 
